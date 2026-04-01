@@ -37,11 +37,16 @@ const OnboardingPage = () => {
     onboardingMutation(formState);
   };
 
- const handleRandomAvatar = () => {
-  const idx = Math.floor(Math.random() * 100) + 1; // 1-100 included
-  const randomAvatar = `https://avatar.iran.liara.run/public/${idx}`;
-  
-  setFormState({ ...formState, profilePic: randomAvatar });
+  const handleRandomAvatar = () => {
+  const idx = Math.floor(Math.random() * 1000); // more variety
+
+  const randomAvatar = `https://robohash.org/${idx}`;
+
+  setFormState((prev) => ({
+    ...prev,
+    profilePic: randomAvatar,
+  }));
+
   toast.success("Random profile picture generated!");
 };
 
